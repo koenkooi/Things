@@ -18,7 +18,7 @@ module bitmap(bitmap, block_size, height, row_size) {
 			if (bitmap[loc] != 0) {
 				union() {
 					translate(v = [loc_x(loc), loc_y(loc), loc_z(loc)]) {
-						cube(size = [block_size+0.5, block_size+0.5, height * bitmap[loc]], center = true);
+						cube(size = [block_size, block_size, height * bitmap[loc]], center = true);
 					}
 				}
 			}
