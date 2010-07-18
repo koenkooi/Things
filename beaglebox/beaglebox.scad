@@ -14,7 +14,7 @@ G1 X-25.0 Y20.0 Z0.4 F945
 
 inside_l = 77.8;
 inside_w = 79.8;
-edge_thickness = 2.6;
+edge_thickness = 3;
 
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
@@ -210,9 +210,9 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 		} // end if rounded corners
 
 		//text
-		translate(v=[box_width - edge_thickness/2,box_length - 70.4 - corner_radius/2, box_height/2]) {
+		translate(v=[box_width - 0.5,box_length - 74.8 , box_height/2]) {
 			rotate(a = [0, 90, 0]) {
-				8bit_str(chars, char_count, 0.8, edge_thickness);
+				8bit_str(chars, char_count, 0.82, 1);
 			}
 		}
 	} // end difference
