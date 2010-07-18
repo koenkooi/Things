@@ -210,9 +210,9 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 		} // end if rounded corners
 
 		//text
-		translate(v=[box_width - edge_thickness/2,box_length - 70.4 - corner_radius/2,box_height/2]) {
+		translate(v=[box_width - edge_thickness/2,box_length - 70.4 - corner_radius/2, box_height/2]) {
 			rotate(a = [0, 90, 0]) {
-				8bit_str(chars, char_count, 0.8, edge_thickess/2);
+				8bit_str(chars, char_count, 0.8, edge_thickness);
 			}
 		}
 	} // end difference
