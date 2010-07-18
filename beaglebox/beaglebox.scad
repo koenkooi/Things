@@ -10,6 +10,8 @@ G1 X-25.0 Y20.0 Z0.4 F945
 */
 
 
+<../bitmap.scad>
+
 inside_l = 77.8;
 inside_w = 79.8;
 edge_thickness = 2.6;
@@ -20,7 +22,7 @@ stud_size = 4;
 stud_height = 5;
 pcb_thickness = 2;
 // Set this to zero have a 'coaster' instead of a box
-extra_height = 5;
+extra_height = 6;
 
 box_length = inside_l + (edge_thickness * 2);
 box_width = inside_w + (edge_thickness * 2); 
@@ -34,6 +36,10 @@ knob_height = 1;
 use_rounded_corners = 1;
 inside_corner_radius = edge_thickness*2;
 corner_radius = edge_thickness*2;
+
+//Text
+chars = ["B","e","a","g","l","e","b","o","a","r","d"];
+char_count = 11;
 
 translate(v = [ -box_width / 2, -box_length / 2, 0]) { 	
 	difference() {
@@ -148,8 +154,8 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 			cube([62, edge_thickness, extra_height], center=false);
 		}
 		//sd: 45mm long, 9mm corner offset
-		translate(v = [9 + edge_thickness, box_length - edge_thickness, stud_height + pcb_thickness]) {
-			cube([45, edge_thickness, extra_height], center=false);
+		translate(v = [9 + edge_thickness, box_length - edge_thickness*2, stud_height + pcb_thickness]) {
+			cube([45, edge_thickness*3, extra_height], center=false);
 		}
 		//power: 23mm long, 21mm corner offset
 		translate(v = [0,21 + edge_thickness, stud_height + pcb_thickness]) {
@@ -203,7 +209,14 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 			}
 		} // end if rounded corners
 
-
+		//text
+		translate(v=[box_width - edge_thickness/2,box_length - 70.4 - corner_radius/2,box_height/2]) {
+			rotate(a = [0, 90, 0]) {
+				8bit_str(chars, char_count, 0.8, edge_thickess/2);
+			}
+		}
 	} // end difference
 } // end translate
+
+
 
