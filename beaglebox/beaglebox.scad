@@ -18,11 +18,11 @@ edge_thickness = 3;
 
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
-stud_size = 4;
+stud_size = 7;
 stud_height = 5;
 pcb_thickness = 2;
 // Set this to zero have a 'coaster' instead of a box
-extra_height = 6;
+extra_height = 7;
 
 box_length = inside_l + (edge_thickness * 2);
 box_width = inside_w + (edge_thickness * 2); 
@@ -44,6 +44,12 @@ char_count = 11;
 translate(v = [ -box_width / 2, -box_length / 2, 0]) { 	
 	difference() {
 		union() {
+			//text
+			translate(v=[box_width - 0.6,box_length - 74.8 , box_height/2 + extra_height - 3]) {
+				rotate(a = [0, 90, 0]) {
+					8bit_str(chars, char_count, 0.82, 1);
+				}
+			}
 			// hollowed out box
 			difference() {					
 				//outside
@@ -208,13 +214,6 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 				}
 			}
 		} // end if rounded corners
-
-		//text
-		translate(v=[box_width - 0.5,box_length - 74.8 , box_height/2]) {
-			rotate(a = [0, 90, 0]) {
-				8bit_str(chars, char_count, 0.82, 1);
-			}
-		}
 	} // end difference
 } // end translate
 
