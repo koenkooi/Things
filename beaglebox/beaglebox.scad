@@ -75,7 +75,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[inside_corner_radius, -inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
 						}
 					}
 				}
@@ -86,7 +86,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[-inside_corner_radius, -inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
 						}
 					}
 				}
@@ -97,7 +97,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[-inside_corner_radius, inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
 						}
 					}
 				}
@@ -108,7 +108,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[inside_corner_radius, inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
 						}
 					}
 				}
@@ -176,7 +176,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[corner_radius, -corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height);
+						cylinder(r=corner_radius, h=box_height, $fn=100);
 					}
 				}
 			}
@@ -187,7 +187,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[-corner_radius, -corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height);
+						cylinder(r=corner_radius, h=box_height, $fn=100);
 					}
 				}
 			}
@@ -198,7 +198,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[-corner_radius, corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height);
+						cylinder(r=corner_radius, h=box_height, $fn=100);
 					}
 				}
 			}
@@ -209,7 +209,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[corner_radius, corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height);
+						cylinder(r=corner_radius, h=box_height, $fn=100);
 					}
 				}
 			}
