@@ -17,7 +17,7 @@ translate([1,-19,10.3]) {
 
 translate([-15,-44,11]) {
 	rotate(a = [-90,0,0]) {
-		color([0.4,0.4,0.4]) {
+		color([0.4,0.4,0.4,1]) {
 			import_stl("M8_Extruder_Idler_Block_Beefy.stl");
 		}
 	}
