@@ -37,7 +37,7 @@ module cart() {
 					difference() {	
 						translate([-1,0,2.5]) {
 							rotate(a = [90,0,0]) {
-								color([1,0,0]) {
+								color([0,1,0,0.5]) {
 									import_stl("y-stage-2_batch7_v2.stl");
 								}
 							}
@@ -51,8 +51,8 @@ module cart() {
 					}
 				}
 			}
-			translate(v=[-28,-48,16]) {
-				cube([12,47.8,2.5]);
+			translate(v=[-28,-48,16.25]) {
+				cube([5,47.8,2]);
 			}
 		} /// end union
 		translate(v=[-20,-49,-24]) {
