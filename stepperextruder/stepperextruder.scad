@@ -42,7 +42,7 @@ translate([-10,-13.5,6.5]) {
 	}
 }
 
-translate([-40,40,32]) {
+translate([-40,18,11]) {
 	rotate(a = [180,-90,0]) {
 		color([1,1,1,0.6]) {
 			import_stl("nema17-dustcap.stl");
