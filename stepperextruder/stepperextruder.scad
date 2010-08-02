@@ -1,3 +1,6 @@
+// Mockup of stepperextruder
+// (c) 2010 Koen Kooi
+// Licensed under the GPLv2
 
 translate([15.5,8.5,0.7]) {
 	rotate(a = [0,-90,0]) {
@@ -35,6 +38,14 @@ translate([-10,-13.5,6.5]) {
 	rotate(a = [90,0,0]) {
 		color([0,0,1,0.6]) {
 			import_stl("MakerBot_M8_Extruder_Mount-v2.stl");
+		}
+	}
+}
+
+translate([-40,40,32]) {
+	rotate(a = [180,-90,0]) {
+		color([1,1,1,0.6]) {
+			import_stl("nema17-dustcap.stl");
 		}
 	}
 }
