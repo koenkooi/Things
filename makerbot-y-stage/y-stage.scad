@@ -51,8 +51,8 @@ module cart() {
 					}
 				}
 			}
-			translate(v=[-23,-48,16]) {
-				cube([7,47.8,2.5]);
+			translate(v=[-28,-48,16]) {
+				cube([12,47.8,2.5]);
 			}
 		} /// end union
 		translate(v=[-20,-49,-24]) {
