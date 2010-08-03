@@ -13,11 +13,13 @@ use <../mcad/bearing.scad>
 mm = 1;
 Bearing624 = [4*mm, 13*mm, 5*mm];
 
+color([0,0,1]) { cart(); }
 
-rails();
-cartangleclamp();
-cart();
-cartbearings();
+if(drawstuff == 1) {
+	rails();
+	color([0,1,0]) { cartangleclamp(); }
+	cartbearings();
+}
 
 module cartbearings() {
 	bearing(pos = [17.5,20,9.5], angle=[0,90,0], model=Bearing624);
@@ -48,6 +50,20 @@ module cart() {
 			}
 			translate(v=[11.5,-24,15]) {
 				cube([5,48,3]);
+			}
+
+			//fill in some holes
+			translate(v = [-28,-23,17.5]) {
+				cube([56,6,5]);
+			}
+			translate(v = [-28,17,17.5]) {
+				cube([56,6,5]);
+			}
+			translate(v = [-7,-14,17.5]) {
+				cube([6,10,5]);
+			}
+			translate(v = [-7,4,17.5]) {
+				cube([6,10,5]);
 			}
 		} // end union
 	
@@ -100,9 +116,7 @@ module ytop(yheight) {
 module cartangleclamp() {
 	translate([29,24,1]) {
 		rotate(a = [90,180,0]) {
-			color([0,1,0]) {
-				import_stl("y-stage_batch7_v2_rotated.stl");
-			}
+			import_stl("y-stage_batch7_v2_rotated.stl");
 		}
 	}
 }
