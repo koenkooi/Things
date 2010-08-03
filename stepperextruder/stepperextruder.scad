@@ -2,6 +2,17 @@
 // (c) 2010 Koen Kooi
 // Licensed under the GPLv2
 
+use <../mcad/units.scad>
+use <../mcad/math.scad>
+use <../mcad/constants.scad>
+use <../mcad/motors.scad>
+
+translate( v = [-5,18.6,10.8]) {
+	rotate(a=[0,90,0]) {
+		stepper_motor_mount(17,5);
+	}
+}
+
 translate([15.5,8.5,0.7]) {
 	rotate(a = [0,-90,0]) {
 		color([1,0,0]) {
