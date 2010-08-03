@@ -15,6 +15,8 @@ Bearing624 = [4*mm, 13*mm, 5*mm];
 
 color([0,0,1]) { cart(); }
 
+drawstuff = 1;
+
 if(drawstuff == 1) {
 	rails();
 	color([0,1,0]) { cartangleclamp(); }
@@ -54,17 +56,19 @@ module cart() {
 
 			//fill in some holes
 			translate(v = [-28,-23,17.5]) {
-				cube([56,6,5]);
+				cube([26,6,5]);
 			}
 			translate(v = [-28,17,17.5]) {
-				cube([56,6,5]);
+				cube([26,6,5]);
 			}
+
 			translate(v = [-7,-14,17.5]) {
 				cube([6,10,5]);
 			}
 			translate(v = [-7,4,17.5]) {
 				cube([6,10,5]);
 			}
+
 		} // end union
 	
 		translate(v=[-20,25,0]) {
