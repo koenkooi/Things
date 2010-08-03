@@ -6,6 +6,20 @@ use <../mcad/units.scad>
 use <../mcad/math.scad>
 use <../mcad/constants.scad>
 use <../mcad/motors.scad>
+use <../mcad/bearing.scad>
+
+mm = 1;
+Bearing608 = [8*mm, 22*mm, 7*mm];
+Bearing624 = [4*mm, 13*mm, 5*mm];
+Bearing627 = [7*mm, 22*mm, 7*mm];
+Bearing688 = [8*mm, 16*mm, 5*mm];
+SkateBearing = Bearing608;
+
+
+bearing(pos = [-6.7,-20,10.8], angle=[0,90,0], model=Bearing608);
+bearing(pos = [-28.2,-20,10.8], angle=[0,90,0], model=Bearing608);
+bearing(pos = [-18.5,-35,10.8], angle=[0,90,0], model=Bearing608);
+
 
 translate( v = [-5,18.6,10.8]) {
 	rotate(a=[0,90,0]) {
@@ -21,6 +35,7 @@ translate([15.5,8.5,0.7]) {
 	}
 }
 
+
 translate([1,-19,10.3]) {
 	rotate(a = [0,90,0]) {
 		color([0,1,0]) {
@@ -28,6 +43,7 @@ translate([1,-19,10.3]) {
 		}
 	}
 }
+
 
 translate([-15,-44,11]) {
 	rotate(a = [-90,0,0]) {
