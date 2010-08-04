@@ -47,12 +47,14 @@ module cart() {
 				ytop(5);
 			}
 			//vertical bearing holder
-			translate(v=[-28,-24,-14.5]) {
-				cube([5,48,32.1]);
-			}
-			translate(v=[11.5,-24,15]) {
-				cube([5,48,3]);
-			}
+			translate(v=[-28,-24,-14.5]) { cube([5,48,32.1]);}
+			translate(v=[11.5,-24,15]) { cube([5,48,3]);}
+
+			//clamp support
+			translate(v = [1,7,-16]) { cube([4.3,6,15]);}
+			translate(v = [1,-13,-16]) { cube([4.3,6,15]);}
+			translate(v = [2.15,-24,-16]) { cube([3.2,48,3]);}
+
 
 			//fill in some holes
 			translate(v = [-28,-23,17.5]) {
@@ -73,6 +75,12 @@ module cart() {
 			}
 			translate(v = [-7,4,17.5]) {
 				cube([6,10,5]);
+			}
+
+			translate( v= [40,0,0]) {
+				rotate(a = [0,0,180]) {
+					cartangleclamp();
+				}
 			}
 
 		} // end union
@@ -97,17 +105,16 @@ module cart() {
 		#translate(v=[26,-20,-8]) {rotate(a = [0,38,0]) { cylinder(h=13, r=2, $fn=48); } }
 
 
-	} //end difference
+		//countersink M4 bolthole to make room for beltclamp
+		#translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5); }}
+	
+		//clampholes
+		#translate(v = [0,10,-3]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
+		#translate(v = [0,10,-13]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
+		#translate(v = [0,-10,-3]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
+		#translate(v = [0,-10,-13]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
 
-	difference () {
-		translate( v= [40,0,0]) {
-			rotate(a = [0,0,180]) {
-				cartangleclamp();
-			}
-		}
-	//countersink M4 bolthole to make room for beltclamp
-	#translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5); }}
-	}
+		} //end difference
 }
 
 module rails() {
