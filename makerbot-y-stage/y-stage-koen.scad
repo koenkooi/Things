@@ -107,6 +107,9 @@ module cart() {
 
 		//countersink M4 bolthole to make room for beltclamp
 		#translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5); }}
+		translate(v = [-29,0,-9]) { rotate(a = [0,90,0]) { cylinder(r=6,h=7); }}
+		translate(v = [-26,0,-16]) {  cube([7,12,15], center=true); }
+
 	
 		//clampholes
 		#translate(v = [0,10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13); }}
