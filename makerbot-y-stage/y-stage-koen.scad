@@ -51,8 +51,8 @@ module cart() {
 			translate(v=[11.5,-24,15]) { cube([5,48,3]);}
 
 			//clamp support
-			translate(v = [1,7,-16]) { cube([4.3,6,15]);}
-			translate(v = [1,-13,-16]) { cube([4.3,6,15]);}
+			translate(v = [1,6,-16]) { cube([4.3,8,15]);}
+			translate(v = [1,-14,-16]) { cube([4.3,8,15]);}
 			translate(v = [2.15,-24,-16]) { cube([3.2,48,3]);}
 
 
@@ -113,6 +113,12 @@ module cart() {
 		#translate(v = [0,10,-13]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
 		#translate(v = [0,-10,-3]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
 		#translate(v = [0,-10,-13]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=7); }}
+
+		//overhangs
+		translate(v = [1.1,-7.8,-16.5]) { rotate(a=[0,0,60]){ cube([2,2,16]); }}
+		translate(v = [0.3,-15,-16.5]) { rotate(a=[0,0,30]){ cube([2,2,16]); }}
+		translate(v = [1.1,12.2,-16.5]) { rotate(a=[0,0,60]){ cube([2,2,16]); }}
+		translate(v = [0.3,5,-16.5]) { rotate(a=[0,0,30]){ cube([2,2,16]); }}
 
 		} //end difference
 }
