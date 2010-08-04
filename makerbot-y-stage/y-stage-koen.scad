@@ -61,6 +61,12 @@ module cart() {
 			translate(v = [-28,17,17.5]) {
 				cube([26,6,5]);
 			}
+			translate(v = [14,-23,17.5]) {
+				cube([10,6,5]);
+			}
+			translate(v = [14,17,17.5]) {
+				cube([10,6,5]);
+			}
 
 			translate(v = [-7,-14,17.5]) {
 				cube([6,10,5]);
