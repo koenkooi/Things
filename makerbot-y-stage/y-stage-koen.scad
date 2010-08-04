@@ -15,7 +15,7 @@ Bearing624 = [4*mm, 13*mm, 5*mm];
 
 color([0,0,1]) { cart(); }
 
-drawstuff = 1;
+drawstuff = 0;
 
 if(drawstuff == 1) {
 	rails();
