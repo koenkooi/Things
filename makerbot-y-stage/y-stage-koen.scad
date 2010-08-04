@@ -76,12 +76,14 @@ module cart() {
 			}
 
 		} // end union
-	
+
+		// rail clearance
 		translate(v=[-20,25,0]) {
 			rotate(a = [90,0,0]) {
 				cylinder(h=50, r=5, $fn=48);
 			}
 		}
+
 
 		//bearing axles
 		#translate(v=[-35,20,9.5]) {rotate(a = [90,0,90]) { cylinder(h=70, r=2, $fn=48); } }
@@ -97,10 +99,13 @@ module cart() {
 
 	} //end difference
 
-	translate( v= [40,0,0]) {
-		rotate(a = [0,0,180]) {
-			cartangleclamp();
+	difference () {
+		translate( v= [40,0,0]) {
+			rotate(a = [0,0,180]) {
+				cartangleclamp();
+			}
 		}
+	translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5); }}
 	}
 }
 
