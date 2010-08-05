@@ -76,3 +76,11 @@ translate([-40,18,11]) {
 		}
 	}
 }
+
+translate([-14.5,-23.5,-48]) {
+	rotate(a = [0,0,0]) {
+		color([0,0,0,1]) {
+			import_stl("groovemount.stl");
+		}
+	}
+}
