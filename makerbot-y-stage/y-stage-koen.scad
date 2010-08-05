@@ -54,6 +54,8 @@ module cart() {
 			translate(v = [1,6,-16.5]) { cube([4.3,8,14.5]);}
 			translate(v = [1,-14,-16.5]) { cube([4.3,8,14.5]);}
 			translate(v = [2.15,-24,-16.5]) { cube([3.2,48,3.5]);}
+			translate(v = [1,-14,-2]) { rotate(a=[0,40,0]){ cube([4.3,8,16]);}}
+			translate(v = [1,6,-2]) { rotate(a=[0,40,0]){ cube([4.3,8,16]);}}
 
 
 			//fill in some holes
@@ -106,16 +108,16 @@ module cart() {
 
 
 		//countersink M4 bolthole to make room for beltclamp
-		#translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5); }}
-		translate(v = [-29,0,-9]) { rotate(a = [0,90,0]) { cylinder(r=6,h=7); }}
+		#translate(v = [1.9,0,-9]) { rotate(a = [0,90,0]) { cylinder(r1=3.8, r2=1.9, h=2.5, $fn=24); }}
+		translate(v = [-29,0,-9]) { rotate(a = [0,90,0]) { cylinder(r=6,h=7, $fn=24); }}
 		translate(v = [-26,0,-16]) {  cube([7,12,15], center=true); }
 
 	
 		//clampholes
-		#translate(v = [0,10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13); }}
-		#translate(v = [0,10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6); }}
-		#translate(v = [0,-10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13); }}
-		#translate(v = [0,-10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6); }}
+		#translate(v = [0,10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13, $fn=24); }}
+		#translate(v = [0,10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6, $fn=24); }}
+		#translate(v = [0,-10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13, $fn=24); }}
+		#translate(v = [0,-10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6, $fn=24); }}
 
 		//overhangs
 		translate(v = [1.1,-7.8,-16.5]) { rotate(a=[0,0,60]){ cube([2,2,16]); }}
@@ -142,7 +144,7 @@ module rails() {
 }
 
 module ytop(yheight) {
-	linear_extrude(file = "stage.dxf", height = yheight, center = true, convexity = 10);
+	linear_extrude(file = "stage.dxf", height = yheight, center = true, convexity = 20);
 }
 
 module cartangleclamp() {
