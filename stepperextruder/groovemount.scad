@@ -53,12 +53,12 @@ module plate() {
 		}
 
 		// mounting bolt left hole
-		translate([plate_length/2-14, plate_width/2, -1]) {
+		#translate([plate_length/2+13, plate_width/2, -1]) {
 			cylinder(r=mounting_bolt_diameter/2, h=plate_height+2);
 		}
 
 		// mounting bolt right hole
-		translate([plate_length/2+11, plate_width/2, -1]) {
+		#translate([plate_length/2-13, plate_width/2, -1]) {
 			cylinder(r=mounting_bolt_diameter/2, h=plate_height+2);
 		}
 
