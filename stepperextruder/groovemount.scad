@@ -4,8 +4,8 @@
 // GPLv2 or later
 
 // set them slightly larger if printer isn't perfect
-barrel_diameter = 16.6; // 16 + .6
-barrel_inset_diameter = 13.2; // 13 + .2
+barrel_diameter = 16.9; // 16 + .6
+barrel_inset_diameter = 13.4; // 13 + .2
 
 plate_length = 40;
 plate_width = 25;
@@ -14,11 +14,16 @@ plate_width = 25;
 plate_height = 10;
 
 // mounting bolts will need to be 15mm long?
-mounting_bolt_diameter = 3;
+mounting_bolt_diameter = 3.4;
+
+// for standard plastruder - left = 13, right = 13
+// for printruder II - left = 14, right = 11
+left_mounting_bolt_distance = 13;
+right_mounting_bolt_distance = 13;
 
 // single horizontal bolt to clamp and hold insulator in place
 // will need to be around 45mm long?
-clamp_bolt_diameter = 4;
+clamp_bolt_diameter = 4.2;
 
 $fn = 32;
 
@@ -40,7 +45,18 @@ module teardrop(radius,height,truncated) {
 
 module plate() {
 	difference() {
-		cube([plate_length, plate_width, plate_height]);
+		union() {
+			cube([plate_length, plate_width, plate_height]);
+
+			// mounting bolt reinforcement
+			translate([0, -plate_width/3+5, 0]) {
+				cube([plate_length/3, plate_width/3-5, plate_height]);
+			}
+
+			translate([plate_length-plate_length/3, -plate_width/3+5, 0]) {
+				cube([plate_length/3, plate_width/3-5, plate_height]);
+			}
+		}
 
 		// barrel top
 		translate([plate_length/2, plate_width/2, plate_height/2]) {
@@ -53,12 +69,12 @@ module plate() {
 		}
 
 		// mounting bolt left hole
-		#translate([plate_length/2+13, plate_width/2, -1]) {
+		translate([plate_length/2-left_mounting_bolt_distance, plate_width/2, -1]) {
 			cylinder(r=mounting_bolt_diameter/2, h=plate_height+2);
 		}
 
 		// mounting bolt right hole
-		#translate([plate_length/2-13, plate_width/2, -1]) {
+		translate([plate_length/2+right_mounting_bolt_distance, plate_width/2, -1]) {
 			cylinder(r=mounting_bolt_diameter/2, h=plate_height+2);
 		}
 
@@ -99,13 +115,18 @@ module cutout() {
 			plate();
 
 			// top cutout
-			translate([plate_length/2-barrel_diameter/2, -1, plate_height/2]) {
-				cube([barrel_diameter, plate_width/2+1, plate_height/2+1]);
+			translate([plate_length/2-barrel_diameter/2, -10, plate_height/2]) {
+				cube([barrel_diameter, plate_width/2+10, plate_height/2+1]);
 			}
 
 			// bottom cutout
 			translate([plate_length/2-barrel_inset_diameter/2, -1, -1]) {
 				cube([barrel_inset_diameter, plate_width/2+1, plate_height/2+2]);
+			}
+
+			// remove 0.5mm from bottom to make it slide on easier
+			translate([-5,-5,-1]) {
+				cube([plate_length+10, plate_width+10, 1.5]);
 			}
 		}
 	}
@@ -113,9 +134,10 @@ module cutout() {
 
 module print() {	
 	// center and orient it to print correctly
-	translate([-plate_length/2, -plate_width/2, 0]) cutout();
+	translate([-plate_length/2, -plate_width/2, -0.5]) cutout();
 }
 
 //plate();
 //cutout();
+//reinforcement();
 print();
