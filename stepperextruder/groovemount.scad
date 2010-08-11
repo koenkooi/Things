@@ -14,7 +14,7 @@ plate_width = 25;
 plate_height = 10;
 
 // mounting bolts will need to be 15mm long?
-mounting_bolt_diameter = 3.4;
+mounting_bolt_diameter = 3.1;
 
 // for standard plastruder - left = 13, right = 13
 // for printruder II - left = 14, right = 11
@@ -23,9 +23,9 @@ right_mounting_bolt_distance = 13;
 
 // single horizontal bolt to clamp and hold insulator in place
 // will need to be around 45mm long?
-clamp_bolt_diameter = 4.2;
+clamp_bolt_diameter = 3.9;
 
-$fn = 32;
+$fn = 96;
 
 module teardrop(radius,height,truncated) {
 	truncateMM = 1;
@@ -49,11 +49,11 @@ module plate() {
 			cube([plate_length, plate_width, plate_height]);
 
 			// mounting bolt reinforcement
-			translate([0, -plate_width/3+5, 0]) {
+			translate([0, -plate_width/3+6, 0]) {
 				cube([plate_length/3, plate_width/3-5, plate_height]);
 			}
 
-			translate([plate_length-plate_length/3, -plate_width/3+5, 0]) {
+			translate([plate_length-plate_length/3, -plate_width/3+6, 0]) {
 				cube([plate_length/3, plate_width/3-5, plate_height]);
 			}
 		}
@@ -128,6 +128,7 @@ module cutout() {
 			translate([-5,-5,-1]) {
 				cube([plate_length+10, plate_width+10, 1.5]);
 			}
+
 		}
 	}
 }
