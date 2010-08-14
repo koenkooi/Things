@@ -115,8 +115,12 @@ module cart() {
 	
 		//clampholes
 		translate(v = [0,10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13, $fn=24); }}
-		translate(v = [0,10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6, $fn=24); }}
 		translate(v = [0,-10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=13, $fn=24); }}
+		translate(v = [7,10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=2.6,h=8, $fn=24); }}
+		translate(v = [7,-10,-4.5]) { rotate(a = [0,90,0]) { cylinder(r=2.6,h=8, $fn=24); }}
+
+
+		translate(v = [0,10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6, $fn=24); }}
 		translate(v = [0,-10,-13.5]) { rotate(a = [0,90,0]) { cylinder(r=1.5,h=6, $fn=24); }}
 
 		//overhangs
