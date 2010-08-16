@@ -13,9 +13,11 @@ use <../mcad/bearing.scad>
 mm = 1;
 Bearing624 = [4*mm, 13*mm, 5*mm];
 
+yoffset = 5;
+
 color([0,0,1]) { cart(); }
 
-drawstuff = 0;
+drawstuff = 1;
 
 if(drawstuff == 1) {
 	rails();
@@ -43,8 +45,15 @@ module cartbearings() {
 module cart() {
 	difference() {	
 		union() {
-			translate(v = [0,0,20]) {
-				ytop(5);
+			difference() {
+				translate(v = [0,-yoffset,20]) ytop(5);
+				// yoffset cutouts
+				translate(v = [-28.1,-25 - yoffset,17.3]) {
+					cube([35,1 + yoffset,5.4]);
+				}
+				translate(v = [11,-25 - yoffset,17.3]) {
+					cube([20,1 + yoffset,5.4]);
+				}
 			}
 			//vertical bearing holder
 			translate(v=[-28,-24,-14.5]) { cube([5,48,32.1]);}
@@ -59,26 +68,60 @@ module cart() {
 
 
 			//fill in some holes
-			translate(v = [-28,-23,17.5]) {
-				cube([26,6,5]);
+			translate(v = [-28,-19 - yoffset,17.5]) {
+				cube([26,2,5]);
 			}
-			translate(v = [-28,17,17.5]) {
-				cube([26,6,5]);
+			translate(v = [-28,17 - yoffset,17.5]) {
+				cube([26,7,5]);
 			}
-			translate(v = [14,-23,17.5]) {
-				cube([10,6,5]);
+			translate(v = [14,-19 - yoffset,17.5]) {
+				cube([10,2,5]);
 			}
-			translate(v = [14,17,17.5]) {
+			translate(v = [14,17 - yoffset,17.5]) {
 				cube([10,6,5]);
 			}
 
-			translate(v = [-7,-14,17.5]) {
+			translate(v = [-7,-14 - yoffset,17.5]) {
 				cube([6,10,5]);
 			}
-			translate(v = [-7,4,17.5]) {
+			translate(v = [-7,4 - yoffset,17.5]) {
 				cube([6,10,5]);
 			}
 
+			// yoffset cutouts
+			translate(v = [9,13.8 + yoffset,17.5]) {
+				intersection() {
+					cube([6, 1.2 +  yoffset,5]);
+					translate(v=[yoffset +1 ,0,0]) { cylinder(r=yoffset + 1.2, h=5);}
+				}
+			}
+			translate(v = [14,13.8 + yoffset,17.5]) {
+				intersection() {
+					cube([6,1.2 + yoffset,5]);
+					cylinder(r=yoffset + 1.2, h=5);
+				}
+			}
+			translate(v = [1,-34 + yoffset,17.5]) {
+				intersection() {
+					cube([1 + yoffset, 1 + yoffset,5]);
+					translate(v=[yoffset +1 ,yoffset ,0]) { cylinder(r=yoffset + 0.2, h=5);}
+				}
+			}
+			translate(v = [11,-34 + yoffset,17.5]) {
+				intersection() {
+					cube([1 + yoffset,1 + yoffset,5]);
+					translate(v=[1,yoffset,0]) { cylinder(r=yoffset + 0.2, h=5);}
+				}
+			}
+			translate(v = [-28,-29 + yoffset,17.5]) {
+					cube([yoffset, 1 +  yoffset,5]);
+			}
+			translate(v = [-26,-29 + yoffset,17.5]) {
+				intersection() {
+					cube([1 + yoffset,1 + yoffset,5]);
+					translate(v=[0,yoffset,0]) { cylinder(r=yoffset + 1.2, h=5);}
+				}
+			}
 			translate( v= [40,0,0]) {
 				rotate(a = [0,0,180]) {
 					cartangleclamp();
