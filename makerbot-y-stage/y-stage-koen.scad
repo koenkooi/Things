@@ -17,7 +17,7 @@ yoffset = 5;
 
 color([0,0,1]) { cart(); }
 
-drawstuff = 1;
+drawstuff = 0;
 
 if(drawstuff == 1) {
 	rails();
@@ -122,6 +122,15 @@ module cart() {
 					translate(v=[0,yoffset,0]) { cylinder(r=yoffset + 1.2, h=5);}
 				}
 			}
+			translate(v = [-28,13 + yoffset,17.5]) {
+				intersection() {
+					cube([10,1 + yoffset,5]);
+					translate(v=[3,0,0]) { cylinder(r=yoffset + 1.3, h=5);}
+				}
+			}
+
+
+
 			translate( v= [40,0,0]) {
 				rotate(a = [0,0,180]) {
 					cartangleclamp();
