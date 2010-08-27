@@ -17,7 +17,7 @@ yoffset = 5;
 
 color([0,0,1]) { cart(); }
 
-drawstuff = 1;
+drawstuff = 0;
 
 if(drawstuff == 1) {
 	rails();
@@ -37,8 +37,8 @@ module cartbearings() {
 
 	bearing(pos = [-22.5,20,9.5], angle=[0,90,0], model=Bearing624);
 	bearing(pos = [-22.5,-20,9.5], angle=[0,90,0], model=Bearing624);
-	bearing(pos = [-22.5,20,-9.5], angle=[0,90,0], model=Bearing624);
-	bearing(pos = [-22.5,-20,-9.5], angle=[0,90,0], model=Bearing624);
+	bearing(pos = [-22.5,20,-9.2], angle=[0,90,0], model=Bearing624);
+	bearing(pos = [-22.5,-20,-9.2], angle=[0,90,0], model=Bearing624);
 }
 
 
@@ -58,12 +58,12 @@ module cart() {
 			//vertical bearing holder
 			translate(v=[-28.5,-24,-14.5]) { cube([5,48,32.1]);}
 			intersection() {
-				translate(v=[-33.5,-24,-14.5]) { cube([5,48,32.1]);}
-				translate(v=[18,-6,0]) {rotate(a = [90,0,0]) { cylinder(h=10, r=50, $fn=200);}}
+				translate(v=[-33.5,-24,-14.5]) { cube([5,48,37]);}
+				translate(v=[18,-6,4]) {rotate(a = [90,0,0]) { cylinder(h=10, r=50, $fn=200);}}
 			}
 			intersection() {
-				translate(v=[-33.5,-24,-14.5]) { cube([5,48,32.1]);}
-				translate(v=[18,16,0]) {rotate(a = [90,0,0]) { cylinder(h=10, r=50, $fn=200);}}
+				translate(v=[-33.5,-24,-14.5]) { cube([5,48,37]);}
+				translate(v=[18,16,4]) {rotate(a = [90,0,0]) { cylinder(h=10, r=50, $fn=200);}}
 			}
 
 			translate(v=[11.5,-24,15]) { cube([5,48,3]);}
@@ -95,6 +95,9 @@ module cart() {
 			}
 			translate(v = [-7,4 - yoffset,17.5]) {
 				cube([6,10,5]);
+			}
+			translate(v = [-28.5,-24,16.5]) {
+				cube([1,48,6]);
 			}
 
 			// yoffset cutouts
@@ -159,8 +162,8 @@ module cart() {
 		//bearing axles
 		translate(v=[-35,20,9.5]) {rotate(a = [90,0,90]) { cylinder(h=70, r=2, $fn=48); } }
 		translate(v=[-35,-20,9.5]) {rotate(a = [90,0,90]) { cylinder(h=70, r=2, $fn=48); } }
-		translate(v=[-35,20,-9.5]) {rotate(a = [90,0,90]) { cylinder(h=20, r=2, $fn=48); } }
-		translate(v=[-35,-20,-9.5]) {rotate(a = [90,0,90]) { cylinder(h=20, r=2, $fn=48); } }
+		translate(v=[-35,20,-9.2]) {rotate(a = [90,0,90]) { cylinder(h=20, r=2, $fn=48); } }
+		translate(v=[-35,-20,-9.2]) {rotate(a = [90,0,90]) { cylinder(h=20, r=2, $fn=48); } }
 
 		translate(v=[14,20,-8]) {rotate(a = [0,-38,0]) { cylinder(h=13, r=2, $fn=48); } }
 		translate(v=[14,-20,-8]) {rotate(a = [0,-38,0]) { cylinder(h=13, r=2, $fn=48); } }
