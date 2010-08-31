@@ -24,16 +24,23 @@ use_rounded_corners = 1; // 0,1
 inside_corner_radius = 8;
 corner_radius = 8;
 
-
 box_width = inside_w + (edge_thickness * 2); 
 box_length = inside_length + (edge_thickness * 2);
 box_height = stud_height + pcb_thickness + extra_height;
+
+<../bitmap.scad>
+chars = ["B","e","a","g","l","e","b","o","a","r","d"];
+char_count = 11;
 
 translate(v = [ -box_width / 2, -box_length / 2, 0]) {   
   if(use_rounded_corners == 1) {
     roundedbox(box_width, box_length, box_height, edge_thickness, stud_size);
   } else {
     plainbox(box_width, box_length, box_height, edge_thickness, stud_size);
+  }
+
+  translate(v=[box_width - 0.5, box_length - 75, box_height/2 + (extra_height - 6)]) {
+  	  //rotate(a = [0, 90, 0]) 8bit_str(chars, char_count, 0.8, 1);
   }
 }
 
@@ -75,7 +82,7 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
     translate(v = [edge_thickness, box_length - stud_size - edge_thickness, 0]) {
       cube([stud_size, stud_size, stud_height], center = false);
     }
-  }
+  } // end union
 }
 
 module roundedbox(box_width, box_length, box_height, edge_thickness, stud_size) {
