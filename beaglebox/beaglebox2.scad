@@ -119,7 +119,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
     //rounded corner bottomleft
     translate(v = [0, 0, 0]) {
       difference() {
-        translate(v=[0-0.01, 0-0.01, -0.5 * box_height]) {
+        translate(v=[0-0.01, -0.01, -0.5 * box_height]) {
           cube([corner_radius ,corner_radius,2*box_height]);
         }
         translate(v=[corner_radius, corner_radius, -0.5 * box_height]) {
@@ -128,6 +128,19 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
       }
     }
   } // end if rounded corners
+
+    //audio: 62mm long, 10mm corner offset
+    translate(v = [10 + edge_thickness, -0.01, stud_height + pcb_thickness]) {
+      cube([62, edge_thickness + 0.02, extra_height + 0.01], center=false);
+    }
+    //sd: 45mm long, 9mm corner offset
+    translate(v = [9 + edge_thickness, box_length - edge_thickness - 0.01, stud_height + pcb_thickness]) {
+      cube([45, edge_thickness + 0.02, extra_height + 0.01], center=false);
+    }
+    //power: 23mm long, 21mm corner offset
+    translate(v = [-0.01, 21 + edge_thickness, stud_height + pcb_thickness]) {
+      cube([edge_thickness + 0.02, 23, extra_height + 0.01], center=false);
+    }
   } //end difference
 }
 
