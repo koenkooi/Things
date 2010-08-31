@@ -7,7 +7,8 @@ inside_length = 77.8;
 inside_w = 79.8;
 
 // outside wall thickness
-edge_thickness = 4;
+edge_thickness = 3.5;
+stud_height = edge_thickness + 3.5;
 
 // Set this to zero have a 'coaster' instead of a box
 extra_height = 10;
@@ -15,7 +16,6 @@ extra_height = 10;
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
 stud_size = 7;
-stud_height = 6;
 pcb_thickness = 2;
 
 // Round the inside and outside corners
@@ -28,7 +28,7 @@ box_width = inside_w + (edge_thickness * 2);
 box_length = inside_length + (edge_thickness * 2);
 box_height = stud_height + pcb_thickness + extra_height;
 
-<../bitmap.scad>
+//<../bitmap.scad>
 chars = ["B","e","a","g","l","e","b","o","a","r","d"];
 char_count = 11;
 
