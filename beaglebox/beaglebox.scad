@@ -14,7 +14,7 @@ G1 X-25.0 Y20.0 Z0.4 F945
 
 inside_l = 77.8;
 inside_w = 79.8;
-edge_thickness = 3;
+edge_thickness = 4;
 
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
@@ -22,7 +22,7 @@ stud_size = 7;
 stud_height = 6;
 pcb_thickness = 2;
 // Set this to zero have a 'coaster' instead of a box
-extra_height = 7;
+extra_height = 10;
 
 box_length = inside_l + (edge_thickness * 2);
 box_width = inside_w + (edge_thickness * 2); 
@@ -45,7 +45,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 	difference() {
 		union() {
 			//text
-			translate(v=[box_width - 0.7,box_length - 74.8 , box_height/2 + extra_height - 3]) {
+			translate(v=[box_width - 0.7,box_length - 74.8 , box_height/2 + (extra_height - 6)]) {
 				rotate(a = [0, 90, 0]) {
 					8bit_str(chars, char_count, 0.82, 1);
 				}
@@ -75,7 +75,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[inside_corner_radius, -inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=64);
 						}
 					}
 				}
@@ -86,7 +86,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[-inside_corner_radius, -inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=64);
 						}
 					}
 				}
@@ -97,7 +97,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[-inside_corner_radius, inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=64);
 						}
 					}
 				}
@@ -108,7 +108,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 							cube([inside_corner_radius,inside_corner_radius,edge_thickness], center=false);
 						}
 						translate(v=[inside_corner_radius, inside_corner_radius, 0]) {
-							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=100);
+							cylinder(r=inside_corner_radius, h=edge_thickness, $fn=64);
 						}
 					}
 				}
@@ -176,7 +176,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[corner_radius, -corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height, $fn=100);
+						cylinder(r=corner_radius, h=box_height, $fn=64);
 					}
 				}
 			}
@@ -187,7 +187,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[-corner_radius, -corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height, $fn=100);
+						cylinder(r=corner_radius, h=box_height, $fn=64);
 					}
 				}
 			}
@@ -198,7 +198,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[-corner_radius, corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height, $fn=100);
+						cylinder(r=corner_radius, h=box_height, $fn=64);
 					}
 				}
 			}
@@ -209,7 +209,7 @@ translate(v = [ -box_width / 2, -box_length / 2, 0]) {
 						cube([corner_radius,corner_radius,box_height], center=false);
 					}
 					translate(v=[corner_radius, corner_radius, 0]) {
-						cylinder(r=corner_radius, h=box_height, $fn=100);
+						cylinder(r=corner_radius, h=box_height, $fn=64);
 					}
 				}
 			}
