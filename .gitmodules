@@ -1,3 +1,9 @@
 [submodule "mcad"]
 	path = mcad
-	url = http://github.com/elmom/MCAD.git
+	url = https://github.com/elmom/MCAD.git
+[submodule "mendel"]
+	path = mendel
+	url = git://github.com/tbuser/parameterized-mendel.git
+[submodule "mendel-groovemount/groovemount"]
+	path = mendel-groovemount/groovemount
+	url = git://github.com/tbuser/groove-mount.git

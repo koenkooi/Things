@@ -18,8 +18,8 @@ mounting_bolt_diameter = 3.1;
 
 // for standard plastruder - left = 13, right = 13
 // for printruder II - left = 14, right = 11
-left_mounting_bolt_distance = 13;
-right_mounting_bolt_distance = 13;
+left_mounting_bolt_distance = 14;
+right_mounting_bolt_distance = 11;
 
 // single horizontal bolt to clamp and hold insulator in place
 // will need to be around 45mm long?

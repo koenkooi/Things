@@ -1,17 +1,17 @@
 // Box for beagleboard, (c) 2010 - Koen Kooi, licensed under CC-BY-SA
 
 // lenght of PCB
-inside_length = 77.8;
+inside_length = 87;
 
 // width of PCB
-inside_w = 79.8;
+inside_w = 86;
 
 // outside wall thickness
-edge_thickness = 4;
-stud_height = edge_thickness + 3.5;
+edge_thickness = 3;
+stud_height = edge_thickness + 3.5 +2;
 
 // Set this to zero have a 'coaster' instead of a box
-extra_height = 10;
+extra_height = 5;
 
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
@@ -48,17 +48,21 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
       translate(v = [stud_size + edge_thickness, stud_size + edge_thickness, -edge_thickness]) {  
         cube([inside_w - 2 * stud_size, inside_length - 2 * stud_size, box_height]);
       }
-      //audio: 62mm long, 10mm corner offset
-      translate(v = [10 + edge_thickness, -0.01, stud_height + pcb_thickness]) {
+      //audio + hdmi: 62mm long, 15mm corner offset
+      translate(v = [15 + edge_thickness, -0.01, stud_height + pcb_thickness]) {
         cube([62, edge_thickness + 0.02, extra_height + 0.01], center=false);
       }
-      //sd: 45mm long, 9mm corner offset
-      translate(v = [9 + edge_thickness, box_length - edge_thickness - 0.01, stud_height + pcb_thickness]) {
-        cube([45, edge_thickness + 0.02, extra_height + 0.01], center=false);
+      //eth + usb: 63mm long, 15mm corner offset
+      translate(v = [15 + edge_thickness, box_length - edge_thickness - 0.01, stud_height + pcb_thickness]) {
+        cube([63, edge_thickness + 0.02, extra_height + 0.01], center=false);
       }
-      //power: 23mm long, 21mm corner offset
-      translate(v = [-0.01, 21 + edge_thickness, stud_height + pcb_thickness]) {
-        cube([edge_thickness + 0.02, 23, extra_height + 0.01], center=false);
+      //power + otg + serial: 51mm long, 28mm corner offset
+      translate(v = [-0.01, 28 + edge_thickness, stud_height + pcb_thickness]) {
+        cube([edge_thickness + 0.02, 51, extra_height + 0.01], center=false);
+      }
+      //microsd: 14mm long, 12mm corner offset
+      translate(v = [-0.01, 12 + edge_thickness, stud_height - pcb_thickness]) {
+        cube([edge_thickness + 0.02, 14, pcb_thickness * 1.5], center=false);
       }
     } // end difference
     //support studs
@@ -72,7 +76,8 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
       cube([stud_size, stud_size, stud_height], center = false);
     }
     translate(v = [edge_thickness, box_length - stud_size - edge_thickness, 0]) {
-      cube([stud_size, stud_size, stud_height], center = false);
+      // lower stud due to serial header
+      cube([stud_size, stud_size, stud_height -2], center = false);
     }
   } // end union
 }

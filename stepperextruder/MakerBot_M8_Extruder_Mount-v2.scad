@@ -1,6 +1,10 @@
 // The MakerBot_M8_Extruder_Mount.stl is from 
 // http://www.thingiverse.com/thing:2175 © 2010 by msruggles, GNU GPLv2
 
+use <groovemount.scad>;
+
+//translate(v = [-25,-48,22.5]) rotate(a = [90,180,180]) cutout();
+
 
 difference() {
 	import_stl("MakerBot_M8_Extruder_Mount.stl");
