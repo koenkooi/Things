@@ -67,18 +67,17 @@ module plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, 
       }
     } // end difference
     //support studs
-    translate(v = [edge_thickness, edge_thickness, 0]) {
-      cube([stud_size, stud_size, stud_height], center = false);
+    translate(v = [edge_thickness, edge_thickness, box_height - stud_height]) {
+      cube([stud_size, stud_size, stud_height * 2], center = false);
     }
-    translate(v = [box_width - stud_size - edge_thickness, edge_thickness, 0]) {
-      cube([stud_size, stud_size, stud_height], center = false);
+    translate(v = [box_width - stud_size - edge_thickness, edge_thickness, box_height - stud_height]) {
+      cube([stud_size, stud_size, stud_height * 2], center = false);
     }
-    translate(v = [box_width - stud_size - edge_thickness, box_length - stud_size - edge_thickness, 0]) {
-      cube([stud_size, stud_size, stud_height], center = false);
+    translate(v = [box_width - stud_size - edge_thickness, box_length - stud_size - edge_thickness, box_height - stud_height]) {
+      cube([stud_size, stud_size, stud_height * 2], center = false);
     }
-    translate(v = [edge_thickness, box_length - stud_size - edge_thickness, 0]) {
-      // lower stud due to serial header
-      cube([stud_size, stud_size, stud_height -2], center = false);
+    translate(v = [edge_thickness, box_length - stud_size - edge_thickness, box_height - stud_height]) {
+      cube([stud_size, stud_size, stud_height * 2], center = false);
     }
   } // end union
 }
