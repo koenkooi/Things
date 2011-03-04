@@ -18,7 +18,9 @@ extra_height = 10;
 
 // stud is inside the wall but aligned to the bottom, 
 // so its stud_size x stud_size x (stud_height - edge_thickness) big
-stud_size = 20;
+stud_size = 4;
+bezel_width = 20;
+
 pcb_thickness = 2;
 
 // Round the inside and outside corners
@@ -33,13 +35,13 @@ box_height = stud_height + pcb_thickness + extra_height;
 
 mirror([0,0,1]) translate(v = [ -box_width / 2, -box_length / 2, 0]) {   
   if(use_rounded_corners == 1) {
-    roundedbox(box_width, box_length, box_height, edge_thickness, stud_size);
+    roundedbox(box_width, box_length, box_height, edge_thickness, bezel_width, stud_size);
   } else {
-    plainbox(box_width, box_length, box_height, edge_thickness, stud_size);
+    plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, stud_size);
   }
 }
 
-module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
+module plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, stud_size) {
   union() {
     difference() {
       //outside
@@ -48,8 +50,8 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
       translate(v = [edge_thickness, edge_thickness, edge_thickness]) {  
         cube([inside_w, inside_length, box_height]);
       }
-      translate(v = [stud_size + edge_thickness, stud_size + edge_thickness, -edge_thickness]) {  
-        cube([inside_w - 2 * stud_size, inside_length - 2 * stud_size, box_height]);
+      translate(v = [bezel_width + edge_thickness, bezel_width + edge_thickness, -edge_thickness]) {  
+        cube([inside_w - 2 * bezel_width, inside_length - 2 * bezel_width, box_height]);
       }
       //S-video 16mm, 41mm corner offset
       translate(v = [41 + edge_thickness, -0.01, stud_height + pcb_thickness + 2]) {
@@ -81,13 +83,13 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
   } // end union
 }
 
-module roundedbox(box_width, box_length, box_height, edge_thickness, stud_size) {
+module roundedbox(box_width, box_length, box_height, edge_thickness, bezel_width, stud_size) {
   difference() {
     union() {
-      plainbox(box_width, box_length, box_height, edge_thickness, stud_size);
+      plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, stud_size);
   
         //rounded corner topleft
-        translate(v = [edge_thickness + stud_size, box_length - edge_thickness - stud_size, 0]) {
+        translate(v = [edge_thickness + bezel_width, box_length - edge_thickness - bezel_width, 0]) {
           difference() {
             translate(v=[0,-inside_corner_radius,0]) {
               cube([inside_corner_radius,inside_corner_radius,edge_thickness]);
@@ -98,7 +100,7 @@ module roundedbox(box_width, box_length, box_height, edge_thickness, stud_size) 
           }
         }
         //rounded corner topright
-        translate(v = [box_width - edge_thickness - stud_size, box_length - edge_thickness - stud_size, 0]) {
+        translate(v = [box_width - edge_thickness - bezel_width, box_length - edge_thickness - bezel_width, 0]) {
           difference() {
             translate(v=[-inside_corner_radius,-inside_corner_radius,0]) {
               cube([inside_corner_radius,inside_corner_radius,edge_thickness]);
@@ -109,7 +111,7 @@ module roundedbox(box_width, box_length, box_height, edge_thickness, stud_size) 
           }
         }
         //rounded corner bottomright
-        translate(v = [box_width - edge_thickness - stud_size, edge_thickness + stud_size, 0]) {
+        translate(v = [box_width - edge_thickness - bezel_width, edge_thickness + bezel_width, 0]) {
           difference() {
             translate(v=[-inside_corner_radius,0,0]) {
               cube([inside_corner_radius,inside_corner_radius,edge_thickness]);
@@ -120,7 +122,7 @@ module roundedbox(box_width, box_length, box_height, edge_thickness, stud_size) 
           }
         }
         //rounded corner bottomleft
-        translate(v = [edge_thickness + stud_size, edge_thickness + stud_size, 0]) {
+        translate(v = [edge_thickness + bezel_width, edge_thickness + bezel_width, 0]) {
           difference() {
             translate(v=[0,0,0]) {
               cube([inside_corner_radius,inside_corner_radius,edge_thickness]);
