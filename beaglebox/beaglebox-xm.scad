@@ -49,9 +49,9 @@ module plainbox(box_width, box_length, box_height, edge_thickness, stud_size) {
       translate(v = [stud_size + edge_thickness, stud_size + edge_thickness, -edge_thickness]) {  
         cube([inside_w - 2 * stud_size, inside_length - 2 * stud_size, box_height]);
       }
-      //audio + hdmi: 62mm long, 15mm corner offset
+      //audio + hdmi: 63mm long, 15mm corner offset
       translate(v = [15 + edge_thickness, -0.01, stud_height + pcb_thickness]) {
-        cube([62, edge_thickness + 0.02, extra_height + 0.01], center=false);
+        cube([63, edge_thickness + 0.02, extra_height + 0.01], center=false);
       }
       //eth + usb: 63mm long, 15mm corner offset
       translate(v = [15 + edge_thickness, box_length - edge_thickness - 0.01, stud_height + pcb_thickness -1 ]) {
