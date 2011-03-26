@@ -79,30 +79,30 @@ module plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, 
 			cube([stud_size, stud_size, stud_height + box_height], center = false);
 		}
 		//clip
-		#translate(v = [edge_thickness - stud_size + 0.95, edge_thickness, box_height -1.5 ]) {
+		translate(v = [edge_thickness - stud_size + 0.95, edge_thickness, box_height -1.5 ]) {
 			rotate(a=[0,-15,0]) cube([stud_size, stud_size * 1.1, stud_size], center = false);
 		}
 	}
 
 	difference() {
- 	   translate(v = [box_width - stud_size - edge_thickness, edge_thickness, 0]) {
-	      cube([stud_size, stud_size, stud_height + box_height], center = false);
+ 	   translate(v = [box_width - stud_size/2.2 - edge_thickness, edge_thickness, 0]) {
+	      cube([stud_size/2, stud_size * 2, stud_height + box_height], center = false);
 	    }
 		//clip
-		#translate(v = [box_width - edge_thickness -0.95, edge_thickness, box_height]) {
-			rotate(a=[0,15,0]) cube([stud_size, stud_size * 1.1, stud_size], center = false);
+		#translate(v = [box_width - edge_thickness -0.5, edge_thickness, box_height]) {
+			rotate(a=[0,15,0]) cube([stud_size, stud_size * 2.1, stud_size], center = false);
 	    }	
 	}
 
 	difference() {
-	    translate(v = [box_width - stud_size - edge_thickness, box_length - stud_size - edge_thickness, 0]) {
-	      cube([stud_size, stud_size, stud_height + box_height], center = false);
+	    translate(v = [box_width - stud_size/2.2 - edge_thickness, box_length - stud_size * 2- edge_thickness, 0]) {
+	      cube([stud_size/2, stud_size * 2, stud_height + box_height], center = false);
 	    }
 		// clip
-	    #translate(v = [box_width - edge_thickness -0.95 , box_length - stud_size - edge_thickness, box_height]) {
-	      rotate(a=[0,15,0]) cube([stud_size, stud_size * 1.1, stud_size], center = false);
+	    #translate(v = [box_width - edge_thickness -0.5 , box_length - stud_size *2 - edge_thickness, box_height]) {
+	      rotate(a=[0,15,0]) cube([stud_size, stud_size * 2.1, stud_size], center = false);
 		}
-		#translate(v = [box_width - edge_thickness - stud_size, box_length - edge_thickness - 1.5, box_height]) {
+		translate(v = [box_width - edge_thickness - stud_size, box_length - edge_thickness - 1.5, box_height]) {
 			rotate(a=[-15,0,0]) cube([stud_size, stud_size * 1.1, stud_size], center = false);
 		}
 	}
@@ -113,7 +113,7 @@ module plainbox(box_width, box_length, box_height, edge_thickness, bezel_width, 
 			cube([stud_size, stud_size, stud_height+ box_height], center = false);
 		}
 		//clip
-		#translate(v = [edge_thickness + 5, box_length - edge_thickness - 0.95, box_height]) {
+		translate(v = [edge_thickness + 5, box_length - edge_thickness - 0.95, box_height]) {
 			rotate(a=[-15,0,0]) cube([stud_size, stud_size * 1.1, stud_size], center = false);
 		}
 	}
