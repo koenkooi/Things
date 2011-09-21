@@ -2,7 +2,7 @@
 
 // arduino:
 
-$fn = 24;
+$fn = 96;
 
 module arduinomega() {
 	union() {
@@ -54,6 +54,13 @@ module sdramps14() {
 	translate([55,90,5]) color([0,1,0]) cube([27.3,16.3,1.6]);	
 }
 
+module bol() {
+	difference() {
+		sphere(r=3.4);
+		translate(v=[0,0,-1.7]) cube([7,7,3.4], center=true);
+	}
+}
+
 module doos() {
 	color([0.3,0.3,0.3,0.95]) difference() { 
 		minkowski()
@@ -66,7 +73,7 @@ module doos() {
 		translate([0,2,0]) cube([62,121,48]);
 
 		// slice off a corner to view the inside, disable for final model
-		translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
+		//translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
 
 		// arduino usb
 		translate([9.5,-7,5]) cube([13,16.5,11]);
@@ -96,11 +103,15 @@ module doos() {
 		}
 
 	}
-	//translate([1,1,1.5]) color([1,0.0,0.0,1]) cube([5,118,2]);
-	//translate([55,1,1.5]) color([1,0.0,0.0,1]) cube([5,118,2]);
-	//translate([63,1,14]) color([1,0.0,0.0,1]) cube([5,80,2]);
+
+	translate(v=[15,15,0]) bol();
+	translate(v=[45,15,0]) bol();
+	translate(v=[20,60,0]) bol();
+	translate(v=[40,60,0]) bol();
+
 }
 
-arduinomega();
-translate([0,0,11.1]) sdramps14();
+
+//arduinomega();
+//translate([0,0,11.1]) sdramps14();
 translate([0,-2.1,-5])doos(); 
