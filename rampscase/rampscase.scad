@@ -58,34 +58,34 @@ module doos() {
 	color([0.3,0.3,0.3,0.95]) difference() { 
 		minkowski()
 		{
-			cube([66,20,48]);
+			cube([62,70,48]);
 			//cylinder(r=2,h=0.1);
 			rotate(a=[90,0,0]) cylinder(r=2, h=0.1);
 
 		}
-		translate([0,2,0]) cube([66,121,48]);
+		translate([0,2,0]) cube([62,121,48]);
 
 		// slice off a corner to view the inside, disable for final model
 		translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
 
 		// arduino usb
-		translate([12.5,-7,5]) cube([13,16.5,11]);
+		translate([9.5,-7,5]) cube([13,16.5,11]);
 
 		// arduino power
 		minkowski() {
-			translate([45,-5,6]) cube([7.5,14,9.5]);
+			translate([42,-5,6]) cube([7.5,14,9.5]);
 			rotate(a=[90.0,0]) cylinder(r=1,h=0.1);
 		}
 
 		// RAMPS power input
 		minkowski() {
-			translate([44.5,-3,21.5]) cube([14,7.6,0.5]);
+			translate([41.5,-3,21.5]) cube([14,7.6,0.5]);
 			rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
 		}
 
 		// RAMPS power output
 		minkowski() {
-			translate([14,-3,21.5]) cube([23,7.6,0.5]);
+			translate([11,-3,21.5]) cube([23,7.6,0.5]);
 			rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
 		}
 	}
@@ -96,4 +96,4 @@ module doos() {
 
 arduinomega();
 translate([0,0,11.1]) sdramps14();
-translate([-3,-2.1,-5])doos(); 
+translate([0,-2.1,-5])doos(); 
