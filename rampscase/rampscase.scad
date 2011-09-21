@@ -48,7 +48,8 @@ module sdramps14() {
 		translate([6.5,10,1.6]) color([0,0,1]) cube([30,7.6,10]); // output
 		translate([38,4,1.6]) color([0,0,1]) cube([20,7.6,10]); // input
 
-
+		translate([54,32,1.6]) color([0.5,0.5,0.5]) cube([6.5,7.5,6.5]); // resetbuttonhousing
+		translate([59,35.5,5]) color([0,0,0]) rotate(a=[0,90,0]) cylinder(r=1.75,h=3); // resetbutton
 	}
 	translate([55,90,5]) color([0,1,0]) cube([27.3,16.3,1.6]);	
 }
@@ -62,29 +63,29 @@ module doos() {
 			rotate(a=[90,0,0]) cylinder(r=2, h=0.1);
 
 		}
-		translate([-0.5,2,0]) cube([66,121,48]);
+		translate([0,2,0]) cube([66,121,48]);
 
 		// slice off a corner to view the inside, disable for final model
-		//translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
+		translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
 
 		// arduino usb
 		translate([12.5,-7,5]) cube([13,16.5,11]);
 
 		// arduino power
 		minkowski() {
-			translate([44.5,-5,5.5]) cube([8,14,10]);
+			translate([45,-5,6]) cube([7.5,14,9.5]);
 			rotate(a=[90.0,0]) cylinder(r=1,h=0.1);
 		}
 
 		// RAMPS power input
 		minkowski() {
-			translate([44,-3,21]) cube([14,7.6,1]);
+			translate([44.5,-3,21.5]) cube([14,7.6,0.5]);
 			rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
 		}
 
 		// RAMPS power output
 		minkowski() {
-			translate([14,-3,21]) cube([23,7.6,1]);
+			translate([14,-3,21.5]) cube([23,7.6,0.5]);
 			rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
 		}
 	}
@@ -93,6 +94,6 @@ module doos() {
 	//translate([63,1,14]) color([1,0.0,0.0,1]) cube([5,80,2]);
 }
 
-//arduinomega();
-//translate([0,0,11.1]) sdramps14();
+arduinomega();
+translate([0,0,11.1]) sdramps14();
 translate([-3,-2.1,-5])doos(); 
