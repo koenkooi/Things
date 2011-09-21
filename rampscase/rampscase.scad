@@ -9,8 +9,8 @@ module arduinomega() {
 		color([0.1,0.35,0.5]) translate([0,0,-1.6]) cube([53.3,101.64,1.6]);
 		translate([10,-7,0.5]) color([0.8,0.8,0.8]) cube([12,16.5,10]); //usb
 		translate([41,-2,0.5]) difference() {
-			color([0,0,0]) cube([9,14,9]);
-			translate(v=[4.5,5.9,5.5]) rotate(a=[90,0,0]) cylinder(r=3,h=6); 
+			color([0,0,0]) cube([9,14,12]);
+			translate(v=[4.5,5.9,6.5]) rotate(a=[90,0,0]) cylinder(r=3,h=6); 
 		} //power
 		translate([1.5,23,0]) color([0,0,0]) cube([2.4,20.7,8.5]); //shield
 		translate([1.5,44.4,0]) color([0,0,0]) cube([2.4,20.7,8.5]); //shield
@@ -73,7 +73,7 @@ module doos() {
 
 		// arduino power
 		minkowski() {
-			translate([42,-5,6]) cube([7.5,14,9.5]);
+			translate([42,-5,6.5]) cube([7.5,14,9.8]);
 			rotate(a=[90.0,0]) cylinder(r=1,h=0.1);
 		}
 
