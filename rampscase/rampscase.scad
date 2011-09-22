@@ -2,7 +2,7 @@
 
 // arduino:
 
-$fn = 96;
+$fn = 10;
 
 module arduinomega() {
 	union() {
@@ -62,56 +62,64 @@ module bol() {
 }
 
 module doos() {
-	color([0.3,0.3,0.3,0.95]) difference() { 
-		minkowski()
-		{
-			cube([62,70,48]);
-			//cylinder(r=2,h=0.1);
-			rotate(a=[90,0,0]) cylinder(r=2, h=0.1);
+	union() {
+		color([0.3,0.3,0.3,0.95]) difference() { 
+			minkowski()
+			{
+				cube([62,85,48]);
+				//cylinder(r=2,h=0.1);
+				rotate(a=[90,0,0]) cylinder(r=3, h=0.1);
+	
+			}
+			translate([0,2,0]) cube([62,121,48]);
+	
+			// slice off a corner to view the inside, disable for final model
+			//translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
+	
+			// arduino usb
+			translate([9.5,-7,5]) cube([13,16.5,11]);
+	
+			// arduino power
+			minkowski() {
+				translate([42,-5,5.6]) cube([7.5,14,9.8]);
+				rotate(a=[90.0,0]) cylinder(r=1,h=0.1);
+			}
+	
+			// RAMPS power input
+			minkowski() {
+				translate([41.5,-3,21.5]) cube([14,7.6,0.5]);
+				rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
+			}
+	
+			// RAMPS power output
+			minkowski() {
+				translate([11,-3,21.5]) cube([23,7.6,0.5]);
+				rotate(a=[90,0,0]) cylinder(r=3,h=0.1);
+			}
+	
+			// RAMPS reset button
+			minkowski() {
+				translate([60,34,20]) cube([6.5,5.5,4.5]);
+				rotate(a=[0,90,0]) cylinder(r=1,h=0.1);
+			}
 
+			// ventilation holes
+			for (z = [0:4:56]) {
+				minkowski() {	
+					translate([3 + z,-1,30]) cube([0.1,4,15]);
+					rotate(a=[90,0,0]) cylinder(r=1,h=0.1);
+				}
+			}			
+	
 		}
-		translate([0,2,0]) cube([62,121,48]);
+	
 
-		// slice off a corner to view the inside, disable for final model
-		//translate(v=[70,-40,-10])  rotate(a=[0,0,45]) cube([40,40,70]);
-
-		// arduino usb
-		translate([9.5,-7,5]) cube([13,16.5,11]);
-
-		// arduino power
-		minkowski() {
-			translate([42,-5,6]) cube([7.5,14,9.8]);
-			rotate(a=[90.0,0]) cylinder(r=1,h=0.1);
-		}
-
-		// RAMPS power input
-		minkowski() {
-			translate([41.5,-3,21.5]) cube([14,7.6,0.5]);
-			rotate(a=[90.0,0]) cylinder(r=3,h=0.1);
-		}
-
-		// RAMPS power output
-		minkowski() {
-			translate([11,-3,21.5]) cube([23,7.6,0.5]);
-			rotate(a=[90,0,0]) cylinder(r=3,h=0.1);
-		}
-
-		// RAMPS reset button
-		minkowski() {
-			translate([60,35,19]) cube([6.5,5.5,4.5]);
-			rotate(a=[0,90,0]) cylinder(r=1,h=0.1);
-		}
-
+		translate(v=[20,60,-0.01]) bol();
+		translate(v=[40,60,-0.01]) bol();
 	}
-
-	translate(v=[15,15,0]) bol();
-	translate(v=[45,15,0]) bol();
-	translate(v=[20,60,0]) bol();
-	translate(v=[40,60,0]) bol();
-
 }
 
 
-//arduinomega();
-//translate([0,0,11.1]) sdramps14();
+arduinomega();
+translate([0,0,11.1]) sdramps14();
 translate([0,-2.1,-5])doos(); 
