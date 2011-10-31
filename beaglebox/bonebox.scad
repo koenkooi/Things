@@ -3,20 +3,20 @@
 // Conventions: width = x, length = y, height = z
 
 // width of PCB
-inside_width = 86.36;
+inside_width = 87;
 
 // lenght of PCB
-inside_length = 53.34;
+inside_length = 54.5;
 
 // outside wall thickness
-edge_thickness = 1;
+edge_thickness = 0.8;
 bottom_thickness = 1;
 border_size = 8;
 
 base_height = 10;
 
 // Number of facets in curves, 32 is a good tradeoff between looks and processing speed
-$fn=16;
+$fn=32;
 
 // helper sizes, disable for final rendering
 //helper(inside_width,inside_length,edge_thickness);
@@ -35,47 +35,76 @@ sh=0;
 pcbt= 2;
 box_length = inside_length + 2*et;
 extra_height = 0;
+radius=25.4/4;
+radius2=25.4/2;
 
 	difference() {
-		minkowski()
-		{
-		 cube([iw - 4 * et ,il - 4 * et,base_height], center=true);
-		 cylinder(r=et*3.01,h=1);
+		intersection() {
+			minkowski()
+				{
+				 cube([iw - 2 * radius + 2*et ,il - 2 * radius + 2*et, base_height], center=true);
+				 cylinder(r=radius,h=1);
+				}	
+			union() {
+				minkowski()
+					{
+				 	cube([iw - 2 * radius2 + 2*et ,il - 2 * radius2 + 2*et, base_height], center=true);
+				 	cylinder(r=radius2,h=1);
+					}
+				translate(v=[-iw/4,0,0]) cube([iw/2 + 2*et ,il + 2*et, base_height*1.2], center=true);
+			}
 		}
-		minkowski()
-		{
+		minkowski(){
 		 translate(v=[0,0, -bt]) cube([iw - 2 * bs - 2 * et, il - 2 * bs - 2 * et, base_height], center=true);
 		 cylinder(r=et*3,h=1);		
 		}
-		//The beaglebone has 2 radii, one 1/4" and one 1/2", we pick the smallest one
-		translate(v=[0,0,bt]) minkowski()
-		{
-			cube([iw - 25.4/2,il - 25.4/2,base_height], center=true);
-			cylinder(r=25.4/4,h=0.1);
+		translate(v=[0,0,bt]) intersection() {
+			minkowski()
+				{
+				 cube([iw - 2 * radius ,il - 2 * radius, base_height], center=true);
+				 cylinder(r=radius,h=1);
+				}	
+			union() {
+				minkowski()
+					{
+				 	cube([iw - 2 * radius2 ,il - 2 * radius2, base_height], center=true);
+				 	cylinder(r=radius2,h=1);
+					}
+				translate(v=[-iw/4,0,0]) cube([iw/2 ,il, base_height*1.2], center=true);
+			}
 		}
 
 
       // cape
-      #translate(v = [-iw/2 + 18, -il/2,-base_height/2 -0.01]) {
+      translate(v = [-iw/2 + 18, -il/2,-base_height/2 -0.01]) {
         //cube([60, 10, bottom_thickness * 1.1], center=false);
       }    
-      #translate(v = [-iw/2 + 18, il/2 - 10 ,-base_height/2 -0.01]) {
+      translate(v = [-iw/2 + 18, il/2 - 10 ,-base_height/2 -0.01]) {
         //cube([60, 10, bottom_thickness * 1.1], center=false);
       }   			
 
       //ethernet
-      #translate(v = [-iw/2 -et*1.5 + -0.01, 22.5 + -il/2, sh + pcbt]) {
-        cube([et *2, 17, 20], center=false);
+      translate(v = [-iw/2 -et*1.5 + -0.01, 21.5 + -il/2, sh + pcbt]) {
+        cube([et *2, 16, 20], center=false);
       }
       //power
-      #translate(v = [-iw/2 -et*1.5 + -0.01, 5.5 +-il/2 -et, sh + pcbt]) {
-        cube([et *2, 10, 20], center=false);
+      translate(v = [-iw/2 -et*1.5 + -0.01, 5.5 +-il/2 -et, sh + pcbt]) {
+        cube([et *2, 9.5, 20], center=false);
       }
 
+      //mini-USB
+      translate(v = [-iw/2 -et*1.5 + -0.01, 41 +-il/2 -et, sh - 4 ]) {
+        cube([et *2, 8, 4.5], center=false);
+      }
 
-      //microsd: 15mm long, 12.5mm corner offset
-      #translate(v = [iw/2  -0.01, 10.5 +-il/2 -et, sh - pcbt]) {
+      //microsd: 15mm long, 27mm corner offset
+      translate(v = [iw/2  -0.01, 27 +-il/2 -et, sh - 1.5 *pcbt]) {
         cube([et *2, 15, pcbt * 1.5], center=false);
+      }
+
+      //USB
+      translate(v = [iw/2  -0.01, 10.5 +-il/2 -et, sh + pcbt]) {
+        cube([et *2, 14, 20], center=false);
       }
 
 	}
