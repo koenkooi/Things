@@ -3,15 +3,15 @@
 // Conventions: width = x, length = y, height = z
 
 // width of PCB
-inside_width = 87;
+inside_width = 88;
 
 // lenght of PCB
-inside_length = 54.3;
+inside_length = 55.3;
 
 // outside wall thickness
-edge_thickness = 0.8;
+edge_thickness = 2;
 bottom_thickness = 1;
-border_size = 8;
+border_size = edge_thickness + 9;
 
 base_height = 10;
 
@@ -84,34 +84,37 @@ radius2=25.4/2;
 	      }   			
 	
 	      //ethernet
-	      translate(v = [-iw/2 -et*1.5 + -0.01, 21.5 + -il/2, sh + pcbt]) {
+	      translate(v = [-iw/2 -et*1.5 + -0.01, 22.5 + -il/2, sh + pcbt]) {
 	        cube([et *2, 16, 20], center=false);
 	      }
 	      //power
-	      translate(v = [-iw/2 -et*1.5 + -0.01, 5.5 +-il/2 -et, sh + pcbt]) {
+	      translate(v = [-iw/2 -et*1.5 + -0.01, 6.5 +-il/2 -et, sh + pcbt]) {
 	        cube([et *2, 9.5, 20], center=false);
 	      }
 	
 	      //mini-USB
-	      translate(v = [-iw/2 -et*1.5 + -0.01, 41 +-il/2 -et, sh - 4 ]) {
+	      translate(v = [-iw/2 -et*1.5 + -0.01, 43 +-il/2 -et, sh - 4 ]) {
 	        cube([et *2, 8, 4.5], center=false);
 	      }
 	
 	      //microsd: 15mm long, 27mm corner offset
-	      translate(v = [iw/2  -0.01, 27 +-il/2 -et, sh - 1.5 *pcbt]) {
+	      translate(v = [iw/2  -0.01, 28 +-il/2 -et, sh - 1.5 *pcbt]) {
 	        cube([et *2, 15, pcbt * 1.5], center=false);
 	      }
-	
+	      translate(v = [iw/2  +2, 28 +-il/2 -et, 1+sh - 1.5 *pcbt]) rotate(a=[0,-50,0]) {
+	        cube([et *2, 15, pcbt * 1.5], center=false);
+	      }	
+
 	      //USB
-	      translate(v = [iw/2  -0.01, 10.5 +-il/2 -et, sh + pcbt]) {
-	        cube([et *2, 14, 20], center=false);
+	      translate(v = [iw/2.1  -0.01, 12.5 +-il/2 -et, sh + pcbt]) {
+	        cube([et *2.5, 14, 20], center=false);
 	      }
 	
 		}
 	
-		translate(v = [-iw/2 +14.5, il/2 -3,-base_height/2 -0.01]) cylinder(r=2.5,h=5);
-		translate(v = [-iw/2 +14.5, -il/2 +3,-base_height/2 -0.01]) cylinder(r=2.5,h=5);
-		translate(v = [iw/2 -5, il/2 -4,-base_height/2 -0.01]) cylinder(r=2,h=5);
-		translate(v = [iw/2 -5, -il/2 +4,-base_height/2 -0.01]) cylinder(r=2,h=5);
+		translate(v = [-iw/2 +14.5, il/2 -2,-base_height/2 -0.01]) cylinder(r=3,h=5);
+		translate(v = [-iw/2 +14.5, -il/2 +2,-base_height/2 -0.01]) cylinder(r=3,h=5);
+		translate(v = [iw/2 -5, il/2 -4,-base_height/2 -0.01]) cylinder(r=3,h=5);
+		translate(v = [iw/2 -5, -il/2 +4,-base_height/2 -0.01]) cylinder(r=3,h=5);
 	}
 }
