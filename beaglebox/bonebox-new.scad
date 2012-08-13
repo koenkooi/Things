@@ -110,36 +110,42 @@ module box(iw, il, bt, base_height, bs, et ) {
 			
       //ethernet
 	
-	translate(v=[et,et,et]) {
-	     translate(v = [-et -0.01, 22.5, + sh + pcbt]) {
-	       cube([et*3, 16, 20], center=false);
-	     }
-	     //power
-	     translate(v = [-et -0.01, 5, sh + pcbt]) {
-	       cube([et *2, 9.5, 20], center=false);
-	     }
-	
-	     //mini-USB
-	     translate(v = [-et + -0.01, 43, 0 ]) {
-	       cube([et *2, 8, 4.5], center=false);
-	     }
-	
-	      //microsd: 15mm long, 27mm corner offset
-	     translate(v = [iw  -0.01, 28, sh - 1.5 *pcbt]) {
-	        cube([et *2, 15, pcbt * 1.5], center=false);
-	     }
-	     translate(v = [iw  +2,  28, 1+sh - 1.5 *pcbt]) rotate(a=[0,-50,0]) {
-	        cube([et *2, 15, pcbt * 1.5], center=false);
-	     }	
-	     translate(v = [iw  -2,  28, +sh - 1.4 *pcbt]) rotate(a=[0,50,0]) {
-	        cube([et *2, 15, pcbt * 1.5], center=false);
-	     }	
-	      //USB
-	     translate(v = [iw +0.01 - et, 12.5 , sh + pcbt]) {
-	        cube([et *3, 14, 20], center=false);
-	     }
-	}
+		translate(v=[et,et,et]) {
+		     translate(v = [-et -0.01, 22.5, + sh + pcbt]) {
+		       cube([et*3, 16, 20], center=false);
+		     }
+		     //power
+		     translate(v = [-et -0.01, 5, sh + pcbt]) {
+		       cube([et *2, 9.5, 20], center=false);
+		     }
+		
+		     //mini-USB
+		     translate(v = [-et + -0.01, 41, 0 ]) {
+		       cube([et *2, 8, 4.5], center=false);
+		     }
+		
+		      //microsd: 15mm long, 29.5mm corner offset
+		     translate(v = [iw  -0.01, 29.5, sh - 1.5 *pcbt]) {
+		        cube([et *2, 15, pcbt * 1.5], center=false);
+		     }
+		     translate(v = [iw  +2,  29.5, 1+sh - 1.5 *pcbt]) rotate(a=[0,-50,0]) {
+		        cube([et *2, 15, pcbt * 1.5], center=false);
+		     }	
+		     translate(v = [iw -1.9 ,  29.5, +sh-1.5]) rotate(a=[0,50,0]) {
+		        cube([et *3, 15, 4], center=false);
+		     }	
+		      //USB
+		     translate(v = [iw +0.01 - et, 14.5 , sh + pcbt]) {
+		        cube([et *3, 14, 20], center=false);
+		     }
+		}
 
+	}
+	translate(v=[et,et,et]) {
+		translate(v = [ +15.5, il -2,-0.01]) cylinder(r=3,h=sh);
+		translate(v = [ +15.5,  +2,-0.01]) cylinder(r=3,h=sh);
+		translate(v = [iw -5, il -6,-0.01]) cylinder(r=4,h=sh);
+		translate(v = [iw -5,  +6,-0.01]) cylinder(r=4,h=sh);
 	}
 
 }
